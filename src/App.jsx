@@ -58,7 +58,7 @@ function App() {
               delay={150}
               animateBy="letters"
               direction="top"
-              className="text-5xl sm:text-xl md:text-xl lg:text-5xl text-[#413A3A] mb-1 font-light"
+              className="text-5xl sm:text-sm md:text-xl lg:text-5xl text-[#413A3A] mb-1 font-light"
             />
             <BlurText
               text="Software Developer"
@@ -100,9 +100,9 @@ function App() {
 
               <div className="flex-shrink-0">
                 <img
-                  src="/Keshi.jpg"
+                  src="/Portfolio_Picture.png"
                   alt="Nigel"
-                  className="rounded-2xl w-56 md:w-80 lg:w-[28rem] object-cover"
+                  className="rounded-2xl w-26 md:w-80 lg:w-[28rem] object-cover"
                 />
               </div>
             </div>
