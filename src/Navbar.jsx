@@ -35,7 +35,7 @@ function Navbar() {
       <span className="text-gray-700 text-sm">{time}</span>
 
       <a
-        href="src/assets/Shillingford - CV.pdf"
+        href="Shillingford - CV.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm font-medium text-gray-800 hover:underline"

@@ -100,7 +100,7 @@ function App() {
 
               <div className="flex-shrink-0">
                 <img
-                  src="src/assets/Tom.jpg"
+                  src="/Keshi.jpg"
                   alt="Nigel"
                   className="rounded-2xl w-56 md:w-80 lg:w-[28rem] object-cover"
                 />
@@ -133,7 +133,7 @@ function App() {
             {[
               {
                 title: "Portfolio Website",
-                image: "src/assets/Tom3.png",
+                image: "/Tom3.png",
                 description:
                   "A modern personal portfolio built with React and Tailwind.",
                 demoLink: "#",
@@ -141,7 +141,7 @@ function App() {
               },
               {
                 title: "E-Commerce App",
-                image: "src/assets/Tom2.png",
+                image: "/Tom2.png",
                 description:
                   "Full-stack shop with cart, checkout, and Stripe integration.",
                 demoLink: "#",
@@ -149,7 +149,7 @@ function App() {
               },
               {
                 title: "AI Chatbot",
-                image: "src/assets/Tom1.png",
+                image: "/Tom1.png",
                 description: "Conversational AI bot powered by OpenAI API.",
                 demoLink: "#",
                 codeLink: "#",
