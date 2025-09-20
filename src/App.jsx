@@ -58,7 +58,7 @@ function App() {
               delay={150}
               animateBy="letters"
               direction="top"
-              className="text-5xl text-[#413A3A] mb-1 font-light"
+              className="text-5xl sm:text-xl md:text-xl lg:text-5xl text-[#413A3A] mb-1 font-light"
             />
             <BlurText
               text="Software Developer"
@@ -224,7 +224,7 @@ function App() {
             curveAmount={0}
             direction="left"
             interactive={true}
-            className="fill-[#413A3A] text-[4rem] font-semibold tracking-tight"
+            className="fill-[#413A3A] text-[3rem] font-semibold tracking-tight"
           />
           <CurvedLoop
             marqueeText="javascript ✦ React ✦ Node.js ✦ Express ✦ Git ✦"
@@ -232,7 +232,7 @@ function App() {
             curveAmount={0}
             direction="right"
             interactive={true}
-            className="fill-[#413A3A] text-[4rem] font-semibold tracking-tight"
+            className="fill-[#413A3A] text-[3rem] font-semibold tracking-tight"
           />
         </div>
       )}
