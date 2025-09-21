@@ -86,12 +86,12 @@ function App() {
                   ABOUT ME
                 </h2>
                 <p className="text-base md:text-xl lg:text-2xl text-[#413A3A] leading-relaxed">
-                  Hi, I'm Nigel Shillingford, a passionate{" "}
+                  Hi, I'm Nigel Shillingford, I'm an aspiring{" "}
                   <span className="font-medium">software developer</span> with a
-                  desire to build sleek,{" "}
+                  desire to build , <span className="font-medium">sleek</span> ,
+                  <span className="font-medium"> creative</span> and{" "}
                   <span className="font-medium">user-focused</span> web
-                  applications. When I'm not coding, you can find me exploring
-                  new tech trends or using other coding creations.
+                  applications.
                 </p>
                 <p className="mt-6 md:mt-8 text-sm md:text-base lg:text-lg font-extralight">
                   Scroll down to see my works
@@ -102,7 +102,7 @@ function App() {
                 <img
                   src="/Portfolio_Picture.png"
                   alt="Nigel"
-                  className="rounded-2xl w-26 md:w-80 lg:w-[28rem] object-cover"
+                  className="rounded-2xl w-26 md:w-80 lg:w-[18rem] object-cover"
                 />
               </div>
             </div>
