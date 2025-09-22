@@ -93,9 +93,47 @@ function App() {
                   <span className="font-medium">user-focused</span> web
                   applications.
                 </p>
-                <p className="mt-6 md:mt-8 text-sm md:text-base lg:text-lg font-extralight">
-                  Scroll down to see my works
-                </p>
+                <div className="flex gap-4 mt-6 justify-center md:justify-start">
+                  <a
+                    href="https://github.com/xiaolingford"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="./github.svg"
+                      alt="First Icon"
+                      width={44}
+                      height={44}
+                      className="cursor-pointer hover:scale-110 transition-transform"
+                    />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/nigel-shillingford-87b819380/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="./LinkedIn.svg"
+                      alt="Second Icon"
+                      width={44}
+                      height={44}
+                      className="cursor-pointer hover:scale-110 transition-transform"
+                    />
+                  </a>
+                  <a
+                    href="mailto:nigelshillingford21@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="./gmail.svg"
+                      alt="Third Icon"
+                      width={44}
+                      height={44}
+                      className="cursor-pointer hover:scale-110 transition-transform"
+                    />
+                  </a>
+                </div>
               </div>
 
               <div className="flex-shrink-0">
