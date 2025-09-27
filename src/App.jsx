@@ -9,8 +9,7 @@
     const [showWorks, setShowWorks] = useState(false);
     const [showSkills, setShowSkills] = useState(false);
     const [showContact, setShowContact] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
-  const [activeProject, setActiveProject] = useState(null); // for fullscreen modal
+
 
 
     useEffect(() => {
@@ -61,7 +60,7 @@
                 delay={150}
                 animateBy="letters"
                 direction="top"
-                className="text-5xl sm:text-sm md:text-xl lg:text-5xl text-[#413A3A] mb-1 font-light"
+                className="text-5xl sm:text-xs md:text-xl lg:text-5xl text-[#413A3A] mb-1 font-light"
               />
               <BlurText
                 text="Software Developer"
@@ -170,54 +169,55 @@
       </motion.div>
 
       {/* Projects Grid + Loop */}
-      <div className="relative w-full max-w-6xl flex flex-col items-center">
-        {/* Cards */}
-        <div className="flex justify-center -space-x-12">
-          {[
-            {
-              title: "Snake Game",
-              image: "/snake.jpg",
-              description: "Basic Snake game made with Java",
-              demoLink: "#",
-              codeLink: "https://github.com/Xiaolingford/Snake-Game",
-              tech: ["/java.svg"],
-            },
-            {
-              title: "To do List",
-              image: "/Todo.jpg",
-              description: "To do list with frontend and API for login and signup as well as todolist items",
-              demoLink: "#",
-              codeLink: "https://github.com/Xiaolingford/TodoFinal",
-              tech: ["/Maui.svg","csharp.svg"],
-            },
-            {
-              title: "Csv to 3 different Graphs",
-              image: "/data.jpg",
-              description: "Data analytics assignment, converting csv data into sankey, bar and pentagram graphs, pair work",
-              demoLink: "#",
-              codeLink: "https://github.com/Bonbon711/PLOTS",
-              tech: ["/python.svg"],
-            },
-            {
-              title: "Microplastic Detection and Classification",
-              image: "/microplastic.jpg",
-              description: "My thesis currently in progress",
-              demoLink: "#",
-              codeLink: "https://github.com/Xiaolingford/Pomeranians",
-              tech: ["/python.svg"],
-            },
-           ].map((project, index) => (
+<div className="relative w-full max-w-6xl flex flex-col items-center">
+  {/* Cards in grid */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+    {[
+      {
+        title: "Snake Game",
+        image: "/snake.jpg",
+        description: "Basic Snake game made with Java",
+        demoLink: "#",
+        codeLink: "https://github.com/Xiaolingford/Snake-Game",
+        tech: ["/java.svg"],
+      },
+      {
+        title: "To do List",
+        image: "/Todo.jpg",
+        description:
+          "To do list with frontend and API for login and signup as well as todolist items",
+        demoLink: "#",
+        codeLink: "https://github.com/Xiaolingford/TodoFinal",
+        tech: ["/Maui.svg", "/csharp.svg"],
+      },
+      {
+        title: "Csv to 3 different Graphs",
+        image: "/data.jpg",
+        description:
+          "Data analytics assignment, converting csv data into sankey, bar and pentagram graphs, pair work",
+        demoLink: "#",
+        codeLink: "https://github.com/Bonbon711/PLOTS",
+        tech: ["/python.svg"],
+      },
+      {
+        title: "Microplastic Detection and Classification",
+        image: "/microplastic.jpg",
+        description: "My thesis currently in progress",
+        demoLink: "#",
+        codeLink: "https://github.com/Xiaolingford/Pomeranians",
+        tech: ["/python.svg"],
+      },
+    ].map((project, index) => (
       <motion.div
         key={index}
         layoutId={`card-${index}`}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.2, duration: 0.8, ease: "easeOut" }}
-        whileHover={{ scale: 1.05, rotate: 0, zIndex: 50 }}
-        style={{ originX: 0.5, originY: 0.5 }}
+        whileHover={{ scale: 1.05, zIndex: 50 }}
         whileHoverTransition={{ duration: 0.3, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}
-        className="relative w-64 h-80 rounded-2xl overflow-hidden shadow-lg group cursor-pointer rotate-2"
+        className="relative w-64 h-80 rounded-2xl overflow-hidden shadow-lg group cursor-pointer mx-auto"
         onClick={() => setActiveProject({ ...project, index })}
       >
         {/* Project Image */}
@@ -232,37 +232,37 @@
           <h3 className="text-xl font-bold mb-2">{project.title}</h3>
           <p className="text-sm mb-4">{project.description}</p>
           <div className="flex flex-col items-center gap-2">
+            {/* GitHub Button */}
             <a
               href={project.codeLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-black px-1 py-1 rounded-lg text-sm hover:bg-gray-200 transition"
+              className="bg-white text-black p-2 rounded-lg hover:bg-gray-200 transition"
             >
               <img
-          src="/github.svg" 
-          alt="GitHub Repo"
-          className=" w-8 h-8 hover:scale-110 transition-transform"
-        />
+                src="/github.svg"
+                alt="GitHub Repo"
+                className="w-6 h-6"
+              />
             </a>
-            <div className="flex gap-3 mt-2">
-    {project.tech?.map((tech, i) => (
-      <img
-        key={i}
-        src={tech}
-        alt="Tech Icon"
-        className="w-10 h-10 bg-white px-1 py-1 rounded-lg  "
-      />
-    ))}
-  </div>
-  </div>
+            {/* Tech Stack */}
+            <div className="flex gap-3 mt-2 flex-wrap justify-center">
+              {project.tech?.map((tech, i) => (
+                <img
+                  key={i}
+                  src={tech}
+                  alt="Tech Icon"
+                  className="w-8 h-8 bg-white p-1 rounded-lg"
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </motion.div>
     ))}
   </div>
 </div>
-
-
-    </div>
+</div>
   )}
 
         

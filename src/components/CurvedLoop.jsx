@@ -119,11 +119,11 @@ const CurvedLoop = ({
       onPointerLeave={endDrag}
     >
       <svg
-        className={`select-none w-full overflow-visible block aspect-[100/12] ${
+        className={`select-none w-full overflow-visible block ${
           className ?? ""
         }`}
-        viewBox={`0 0 ${containerWidth} 80`}
-        preserveAspectRatio="None"
+        viewBox={`0 0 ${containerWidth} 100`}
+        preserveAspectRatio="XMidYMid meet"
       >
         <defs>
           <path
