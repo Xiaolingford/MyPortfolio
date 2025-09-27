@@ -172,7 +172,7 @@
       {/* Projects Grid + Loop */}
       <div className="relative w-full max-w-6xl flex flex-col items-center">
         {/* Cards */}
-        <div className="relative w-full max-w-6xl">
+        <div className="flex justify-center -space-x-12">
           {[
             {
               title: "Portfolio Website",
@@ -180,7 +180,6 @@
               description: "A modern personal portfolio built with React and Tailwind.",
               demoLink: "#",
               codeLink: "#",
-              positions: "top-[20px] left-10 sm:left-12 md:left-80 -rotate-3 z-30",
             },
             {
               title: "E-Commerce App",
@@ -188,7 +187,6 @@
               description: "Full-stack shop with cart, checkout, and Stripe integration.",
               demoLink: "#",
               codeLink: "#",
-              positions: "top-0 left-28 sm:left-40 md:left-[28rem] rotate-2 z-20",
             },
             {
               title: "AI Chatbot",
@@ -196,57 +194,61 @@
               description: "Conversational AI bot powered by OpenAI API.",
               demoLink: "#",
               codeLink: "#",
-              positions: "top-[-10px] left-48 sm:left-60 md:left-[36rem] rotate-1 z-10",
             },
-          ].map((project, index) => (
-            <motion.div
-              key={index}
-              layoutId={`card-${index}`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.8, ease: "easeOut" }}
-              whileHover={{ scale: 1.1, zIndex: 50 }}
-              style={{ originX: 0.5, originY: 0.5 }}
-              whileHoverTransition={{ duration: 0.3, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.2 }}
-              className={`absolute ${project.positions} w-64 h-80 rounded-2xl overflow-hidden shadow-lg group cursor-pointer`}
-              onClick={() => setActiveProject({ ...project, index })}
+            {
+              title: "Portfolio Website",
+              image: "/Tom3.png",
+              description: "A modern personal portfolio built with React and Tailwind.",
+              demoLink: "#",
+              codeLink: "#",
+            },
+           ].map((project, index) => (
+      <motion.div
+        key={index}
+        layoutId={`card-${index}`}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.2, duration: 0.8, ease: "easeOut" }}
+        whileHover={{ scale: 1.05, rotate: 0, zIndex: 50 }}
+        style={{ originX: 0.5, originY: 0.5 }}
+        whileHoverTransition={{ duration: 0.3, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="relative w-64 h-80 rounded-2xl overflow-hidden shadow-lg group cursor-pointer rotate-2"
+        onClick={() => setActiveProject({ ...project, index })}
+      >
+        {/* Project Image */}
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col items-center justify-center text-center text-white p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+          <p className="text-sm mb-4">{project.description}</p>
+          <div className="flex gap-3">
+            <a
+              href={project.demoLink}
+              target="_blank"
+              className="bg-white text-black px-3 py-1 rounded-lg text-sm hover:bg-gray-200 transition"
             >
-              {/* Project Image */}
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col items-center justify-center text-center text-white p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-sm mb-4">{project.description}</p>
-                <div className="flex gap-3">
-                  <a
-                    href={project.demoLink}
-                    target="_blank"
-                    className="bg-white text-black px-3 py-1 rounded-lg text-sm hover:bg-gray-200 transition"
-                  >
-                    Live Demo
-                  </a>
-                  <a
-                    href={project.codeLink}
-                    target="_blank"
-                    className="bg-white text-black px-3 py-1 rounded-lg text-sm hover:bg-gray-200 transition"
-                  >
-                    Code
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              Live Demo
+            </a>
+            <a
+              href={project.codeLink}
+              target="_blank"
+              className="bg-white text-black px-3 py-1 rounded-lg text-sm hover:bg-gray-200 transition"
+            >
+              Code
+            </a>
+          </div>
         </div>
-
-        
-      </div>
-      {/* Fullscreen Modal (unchanged) */}
+      </motion.div>
+    ))}
+  </div>
+</div>
+      {/* Fullscreen Modal */}
       <AnimatePresence>
         {activeProject && (
           <motion.div
@@ -302,7 +304,66 @@
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="mt-80 w-full">
+
+    </div>
+  )}
+
+        
+        {/* Contact Section */}
+        {showContact && (
+          <div
+            id="contact"
+            className="min-h-screen mt-0 w-full flex flex-col items-center justify-center px-6"
+          >
+            <div className="mt-0 w-full ">
+          <CurvedLoop
+            icons={[
+              "./Maui.svg",
+              "./Javascript.svg",
+              "./React.svg",
+              "./vite.svg",
+              "./html5.svg",
+              "./css3.svg",
+              "./python.svg",
+              "./csharp.svg",
+              "./c.svg",
+              "./java.svg",
+              "./nodejs.svg",
+              "./threejs.svg"
+            ]}
+            size={65}
+            gap={120}
+            speed={0.5}
+            curveAmount={0}
+            direction="left"
+            interactive={true}
+          />
+        </div>
+            
+            {/* Title */}
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#413A3A] mb-6">
+              Contact Me
+            </h2>
+
+            {/* Contact Info */}
+            <div className="flex flex-col items-center gap-3 text-center">
+              <a
+                href="mailto:nigelshillingford21@gmail.com"
+                className="text-lg md:text-xl text-[#413A3A] hover:underline"
+              >
+                nigelshillingford21@gmail.com
+              </a>
+              <a
+                href="https://www.linkedin.com/in/nigel-shillingford-87b819380/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg md:text-xl text-[#413A3A] hover:underline"
+              >
+                LinkedIn
+              </a>
+              
+            </div>
+                  <div className="mt-0 w-full ">
           <CurvedLoop
             icons={[
               "./Maui.svg",
@@ -326,38 +387,6 @@
             interactive={true}
           />
         </div>
-    </div>
-  )}
-
-        
-        {/* Contact Section */}
-        {showContact && (
-          <div
-            id="contact"
-            className="min-h-screen w-full flex flex-col items-center justify-center px-6"
-          >
-            {/* Title */}
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#413A3A] mb-6">
-              Contact Me
-            </h2>
-
-            {/* Contact Info */}
-            <div className="flex flex-col items-center gap-3 text-center">
-              <a
-                href="mailto:nigelshillingford21@gmail.com"
-                className="text-lg md:text-xl text-[#413A3A] hover:underline"
-              >
-                nigelshillingford21@gmail.com
-              </a>
-              <a
-                href="https://www.linkedin.com/in/nigel-shillingford-87b819380/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg md:text-xl text-[#413A3A] hover:underline"
-              >
-                LinkedIn
-              </a>
-            </div>
           </div>
         )}
       </div>
