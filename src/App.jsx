@@ -306,7 +306,7 @@
           <CurvedLoop
             icons={[
               "./Maui.svg",
-              "./Vite.svg",
+              "./vite.svg",
               "./Javascript.svg",
               "./React.svg",
             ]}
