@@ -165,7 +165,7 @@
         className="w-full mb-16"
       >
         <h2 className="flex-center text-6xl text-[#413A3A] font-black mb-2">
-          PROJECTS AND SKILLS
+          PROJECTS
         </h2>
       </motion.div>
 
@@ -175,32 +175,36 @@
         <div className="flex justify-center -space-x-12">
           {[
             {
-              title: "Portfolio Website",
-              image: "/Tom3.png",
-              description: "A modern personal portfolio built with React and Tailwind.",
+              title: "Snake Game",
+              image: "/snake.jpg",
+              description: "Basic Snake game made with Java",
               demoLink: "#",
-              codeLink: "#",
+              codeLink: "https://github.com/Xiaolingford/Snake-Game",
+              tech: ["/java.svg"],
             },
             {
-              title: "E-Commerce App",
-              image: "/Tom2.png",
-              description: "Full-stack shop with cart, checkout, and Stripe integration.",
+              title: "To do List",
+              image: "/Todo.jpg",
+              description: "To do list with frontend and API for login and signup as well as todolist items",
               demoLink: "#",
-              codeLink: "#",
+              codeLink: "https://github.com/Xiaolingford/TodoFinal",
+              tech: ["/Maui.svg","csharp.svg"],
             },
             {
-              title: "AI Chatbot",
-              image: "/Tom1.png",
-              description: "Conversational AI bot powered by OpenAI API.",
+              title: "Csv to 3 different Graphs",
+              image: "/data.jpg",
+              description: "Data analytics assignment, converting csv data into sankey, bar and pentagram graphs, pair work",
               demoLink: "#",
-              codeLink: "#",
+              codeLink: "https://github.com/Bonbon711/PLOTS",
+              tech: ["/python.svg"],
             },
             {
-              title: "Portfolio Website",
-              image: "/Tom3.png",
-              description: "A modern personal portfolio built with React and Tailwind.",
+              title: "Microplastic Detection and Classification",
+              image: "/microplastic.jpg",
+              description: "My thesis currently in progress",
               demoLink: "#",
-              codeLink: "#",
+              codeLink: "https://github.com/Xiaolingford/Pomeranians",
+              tech: ["/python.svg"],
             },
            ].map((project, index) => (
       <motion.div
@@ -227,168 +231,151 @@
         <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col items-center justify-center text-center text-white p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <h3 className="text-xl font-bold mb-2">{project.title}</h3>
           <p className="text-sm mb-4">{project.description}</p>
-          <div className="flex gap-3">
-            <a
-              href={project.demoLink}
-              target="_blank"
-              className="bg-white text-black px-3 py-1 rounded-lg text-sm hover:bg-gray-200 transition"
-            >
-              Live Demo
-            </a>
+          <div className="flex flex-col items-center gap-2">
             <a
               href={project.codeLink}
               target="_blank"
-              className="bg-white text-black px-3 py-1 rounded-lg text-sm hover:bg-gray-200 transition"
+              rel="noopener noreferrer"
+              className="bg-white text-black px-1 py-1 rounded-lg text-sm hover:bg-gray-200 transition"
             >
-              Code
+              <img
+          src="/github.svg" 
+          alt="GitHub Repo"
+          className=" w-8 h-8 hover:scale-110 transition-transform"
+        />
             </a>
-          </div>
+            <div className="flex gap-3 mt-2">
+    {project.tech?.map((tech, i) => (
+      <img
+        key={i}
+        src={tech}
+        alt="Tech Icon"
+        className="w-10 h-10 bg-white px-1 py-1 rounded-lg  "
+      />
+    ))}
+  </div>
+  </div>
         </div>
       </motion.div>
     ))}
   </div>
 </div>
-      {/* Fullscreen Modal */}
-      <AnimatePresence>
-        {activeProject && (
-          <motion.div
-            key="modal"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-[999]"
-            onClick={() => setActiveProject(null)}
-          >
-            <motion.div
-              layoutId={`card-${activeProject.index}`}
-              className="relative bg-white rounded-2xl shadow-2xl p-6 max-w-lg w-[90%] text-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="absolute top-3 right-3 text-gray-600 hover:text-black"
-                onClick={() => setActiveProject(null)}
-              >
-                ✕
-              </button>
-              <img
-                src={activeProject.image}
-                alt={activeProject.title}
-                className="rounded-lg w-full h-64 object-cover mb-4"
-              />
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ delay: 0.2, duration: 0.3 }}
-              >
-                <h3 className="text-2xl font-bold mb-2">{activeProject.title}</h3>
-                <p className="text-gray-700 mb-4">{activeProject.description}</p>
-              </motion.div>
-              <div className="flex justify-center gap-4">
-                <a
-                  href={activeProject.demoLink}
-                  target="_blank"
-                  className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href={activeProject.codeLink}
-                  target="_blank"
-                  className="bg-gray-200 text-black px-4 py-2 rounded-lg hover:bg-gray-300 transition"
-                >
-                  Code
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
 
     </div>
   )}
 
         
         {/* Contact Section */}
-        {showContact && (
-          <div
-            id="contact"
-            className="min-h-screen mt-0 w-full flex flex-col items-center justify-center px-6"
-          >
-            <div className="mt-0 w-full ">
-          <CurvedLoop
-            icons={[
-              "./Maui.svg",
-              "./Javascript.svg",
-              "./React.svg",
-              "./vite.svg",
-              "./html5.svg",
-              "./css3.svg",
-              "./python.svg",
-              "./csharp.svg",
-              "./c.svg",
-              "./java.svg",
-              "./nodejs.svg",
-              "./threejs.svg"
-            ]}
-            size={65}
-            gap={120}
-            speed={0.5}
-            curveAmount={0}
-            direction="left"
-            interactive={true}
-          />
-        </div>
-            
-            {/* Title */}
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#413A3A] mb-6">
-              Contact Me
-            </h2>
+{showContact && (
+  <motion.div
+    id="contact"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: true, amount: 0.2 }}
+    className="min-h-screen w-full flex flex-col items-center justify-center px-6"
+  >
+    {/* Top Curved Loop */}
+    <motion.div
+      initial={{ opacity: 0, y: -30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="w-full mb-6"
+    >
+      <CurvedLoop
+        icons={[
+          "./Maui.svg",
+          "./Javascript.svg",
+          "./React.svg",
+          "./vite.svg",
+          "./html5.svg",
+          "./css3.svg",
+          "./python.svg",
+          "./csharp.svg",
+          "./c.svg",
+          "./java.svg",
+          "./nodejs.svg",
+          "./threejs.svg",
+        ]}
+        size={65}
+        gap={120}
+        speed={0.5}
+        curveAmount={0}
+        direction="left"
+        interactive={true}
+      />
+    </motion.div>
 
-            {/* Contact Info */}
-            <div className="flex flex-col items-center gap-3 text-center">
-              <a
-                href="mailto:nigelshillingford21@gmail.com"
-                className="text-lg md:text-xl text-[#413A3A] hover:underline"
-              >
-                nigelshillingford21@gmail.com
-              </a>
-              <a
-                href="https://www.linkedin.com/in/nigel-shillingford-87b819380/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg md:text-xl text-[#413A3A] hover:underline"
-              >
-                LinkedIn
-              </a>
-              
-            </div>
-                  <div className="mt-0 w-full ">
-          <CurvedLoop
-            icons={[
-              "./Maui.svg",
-              "./Javascript.svg",
-              "./React.svg",
-              "./vite.svg",
-              "./html5.svg",
-              "./css3.svg",
-              "./python.svg",
-              "./csharp.svg",
-              "./c.svg",
-              "./java.svg",
-              "./nodejs.svg",
-              "./threejs.svg"
-            ]}
-            size={65}
-            gap={120}
-            speed={0.5}
-            curveAmount={0}
-            direction="right"
-            interactive={true}
-          />
-        </div>
-          </div>
-        )}
+    {/* Title */}
+    <motion.h2
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="text-4xl md:text-5xl font-extrabold text-[#413A3A] mb-6"
+    >
+      Contact Me
+    </motion.h2>
+
+    {/* Contact Info */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="flex flex-col items-center gap-3 text-center"
+    >
+      <a
+        href="mailto:nigelshillingford21@gmail.com"
+        className="text-lg md:text-xl text-[#413A3A] hover:underline"
+      >
+        nigelshillingford21@gmail.com
+      </a>
+      <a
+        href="https://www.linkedin.com/in/nigel-shillingford-87b819380/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-lg md:text-xl text-[#413A3A] hover:underline"
+      >
+        LinkedIn
+      </a>
+    </motion.div>
+
+    {/* Bottom Curved Loop */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="w-full mt-8"
+    >
+      <CurvedLoop
+        icons={[
+          "./Maui.svg",
+          "./Javascript.svg",
+          "./React.svg",
+          "./vite.svg",
+          "./html5.svg",
+          "./css3.svg",
+          "./python.svg",
+          "./csharp.svg",
+          "./c.svg",
+          "./java.svg",
+          "./nodejs.svg",
+          "./threejs.svg",
+        ]}
+        size={65}
+        gap={120}
+        speed={0.5}
+        curveAmount={0}
+        direction="right"
+        interactive={true}
+      />
+    </motion.div>
+  </motion.div>
+  )}
       </div>
     );
   }
