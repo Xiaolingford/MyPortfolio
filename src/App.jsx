@@ -60,7 +60,7 @@
                 delay={150}
                 animateBy="letters"
                 direction="top"
-                className="text-5xl sm:text-xs md:text-xl lg:text-5xl text-[#413A3A] mb-1 font-light"
+                className="text-5xl sm:text-xs md:text-sm lg:text-5xl text-[#413A3A] mb-1 font-light"
               />
               <BlurText
                 text="Software Developer"
