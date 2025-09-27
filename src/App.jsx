@@ -318,7 +318,7 @@
               "./nodejs.svg",
               "./threejs.svg"
             ]}
-            size={75}
+            size={65}
             gap={120}
             speed={0.5}
             curveAmount={0}
