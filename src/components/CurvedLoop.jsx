@@ -44,11 +44,10 @@ const CurvedLoop = ({
 
   let totalIcons = [];
   if (icons.length && pathLength) {
-    // Calculate how many icons we need to fill the path plus extra buffer for seamless looping
-    const count = Math.ceil(pathLength / spacing) + 8; // Extra buffer for smooth transitions
-    const adjustedSpacing = pathLength / (count - 8);
+    const count = Math.ceil(pathLength / spacing) + 2; // Extra buffer for smooth transitions
+    const adjustedSpacing = pathLength / count
 
-    totalIcons = Array.from({ length: count * 4 }, (_, i) => ({
+    totalIcons = Array.from({ length: count}, (_, i) => ({
       icon: icons[i % icons.length],
       pos: i * adjustedSpacing,
     }));
@@ -92,7 +91,7 @@ const CurvedLoop = ({
     lastXRef.current = e.clientX;
     velRef.current = dx;
     setOffset((prev) => {
-      const newOffset = prev + dx;
+      const newOffset = prev - dx;
       return ((newOffset % pathLength) + pathLength) % pathLength;
     });
   };
@@ -136,50 +135,66 @@ const CurvedLoop = ({
           />
         </defs>
 
-        {/* Render images along the path */}
-        {pathLength > 0 &&
-          totalIcons.map(({ icon, pos }, i) => {
-            // Calculate the actual position along the path with proper offset
-            const actualPos = (pos - offset + pathLength) % pathLength;
-            const point = pathRef.current.getPointAtLength(actualPos);
-            
-            // Calculate opacity for smooth edge transitions
-            const leftEdge = 0; // Start of visible area
-            const rightEdge = containerWidth; // End of visible area
-            const fadeZone = size * 1.5; // Even smaller fade zone for subtlety
-            
-            let opacity = 1;
-            
-            // Fade out at left edge with gentle easing
-            if (point.x < leftEdge + fadeZone) {
-              const progress = (point.x - leftEdge) / fadeZone;
-              // Use smoothstep function for more natural transition
-              opacity = Math.max(0, progress * progress * progress * (progress * (progress * 6 - 15) + 10));
-            }
-            // Fade out at right edge with gentle easing
-            else if (point.x > rightEdge - fadeZone) {
-              const progress = (rightEdge - point.x) / fadeZone;
-              // Use smoothstep function for more natural transition
-              opacity = Math.max(0, progress * progress * progress * (progress * (progress * 6 - 15) + 10));
-            }
-            
-            // Only render if opacity is greater than 0
-            return opacity > 0 ? (
-              <image
-                key={i}
-                href={icon}
-                width={size}
-                height={size}
-                x={point.x - size / 2}
-                y={point.y - size / 2}
-                preserveAspectRatio="xMidYMid meet"
-                style={{
-                  opacity: opacity,
-                  transition: 'opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                }}
-              />
-            ) : null;
-          })}
+       {/* Render images along the path */}
+{pathLength > 0 &&
+  totalIcons.map(({ icon, pos }, i) => {
+    const actualPos = (pos - offset + pathLength) % pathLength;
+    const point = pathRef.current.getPointAtLength(actualPos);
+
+    const leftEdge = 0;
+    const rightEdge = containerWidth;
+    const fadeZone = size * 1.5;
+
+    let opacity = 1;
+    if (point.x < leftEdge + fadeZone) {
+      const progress = (point.x - leftEdge) / fadeZone;
+      opacity = Math.max(
+        0,
+        progress ** 3 * (progress * (progress * 6 - 15) + 10)
+      );
+    } else if (point.x > rightEdge - fadeZone) {
+      const progress = (rightEdge - point.x) / fadeZone;
+      opacity = Math.max(
+        0,
+        progress ** 3 * (progress * (progress * 6 - 15) + 10)
+      );
+    }
+
+    return opacity > 0 ? (
+      <foreignObject
+        key={i}
+        x={point.x - size / 2}
+        y={point.y - size / 2}
+        width={size}
+        height={size}
+        style={{ overflow: "visible" }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity,
+            transition:
+              "opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+          }}
+        >
+          <img
+            src={icon}
+            alt=""
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain" // ✅ keeps SVG logos from overflowing
+            }}
+          />
+        </div>
+      </foreignObject>
+    ) : null;
+  })}
+
       </svg>
     </div>
   );

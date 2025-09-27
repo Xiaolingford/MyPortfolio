@@ -302,17 +302,25 @@
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="mt-20 w-full">
+      <div className="mt-80 w-full">
           <CurvedLoop
             icons={[
               "./Maui.svg",
-              "./vite.svg",
               "./Javascript.svg",
               "./React.svg",
+              "./vite.svg",
+              "./html5.svg",
+              "./css3.svg",
+              "./python.svg",
+              "./csharp.svg",
+              "./c.svg",
+              "./java.svg",
+              "./nodejs.svg",
+              "./threejs.svg"
             ]}
-            size={100}
-            gap={80}
-            speed={1}
+            size={75}
+            gap={120}
+            speed={0.5}
             curveAmount={0}
             direction="right"
             interactive={true}
